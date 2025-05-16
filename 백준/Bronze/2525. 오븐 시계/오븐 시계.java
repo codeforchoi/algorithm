@@ -2,22 +2,12 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int A = sc.nextInt();
-        int B = sc.nextInt();
-        int C = sc.nextInt();
+        Scanner scanner = new Scanner(System.in);
 
-        A += C / 60;
-        B += C % 60;
-
-        if (B >= 60) {
-            B -= 60;
-            A += 1;
-        }
-
-        if (A >= 24) {
-            A -= 24;
-        }
-        System.out.println(A + " " + B);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int C = scanner.nextInt();
+        int totalMinutes = A * 60 + B + C;
+        System.out.println(((totalMinutes / 60) % 24) + " " + (totalMinutes % 60));
     }
 }
