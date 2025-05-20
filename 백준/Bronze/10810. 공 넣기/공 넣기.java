@@ -14,22 +14,21 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         int[] info = new int[N];
 
-        for (int l = 0; l < M; l++) {
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-            int i = Integer.parseInt(st.nextToken()) - 1;
-            int j = Integer.parseInt(st.nextToken()) - 1;
-            int k = Integer.parseInt(st.nextToken());
+            int start = Integer.parseInt(st.nextToken()) - 1;
+            int end = Integer.parseInt(st.nextToken()) - 1;
+            int ball = Integer.parseInt(st.nextToken());
 
-            for (int o = i; o <= j; o++) {
-                info[o] = k;
+            for (int o = start; o <= end; o++) {
+                info[o] = ball;
             }
         }
 
         for (int i = 0; i < N; i++) {
-            if (i == (N - 1)) {
-                sb.append(info[i]);
-            } else {
-                sb.append(info[i]).append(" ");
+            sb.append(info[i]);
+            if (i != N - 1) {
+                sb.append(" ");
             }
         }
         System.out.println(sb);
