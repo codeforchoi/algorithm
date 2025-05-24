@@ -9,7 +9,7 @@ public class Main {
         String str = "";
         int count = 0;
 
-        // EOF 처리는 Ctrl + D 단출키를 사용하면 된다.
+        // EOF 처리는 Ctrl + D 단축키를 사용하면 된다.
         while ((str = br.readLine()) != null && !str.equals("")) {
             sb.append(str.trim()).append("\n");
             count++;
