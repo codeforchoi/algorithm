@@ -27,28 +27,25 @@ public class Main {
     }
 
     public static double gradeToScore(String grade) {
-        double score = 0;
-        if (grade.equals("A+")) {
-            score = 4.5;
-        } else if (grade.equals("A0")) {
-            score = 4.0;
-        } else if (grade.equals("B+")) {
-            score = 3.5;
-        } else if (grade.equals("B0")) {
-            score = 3.0;
-        } else if (grade.equals("C+")) {
-            score = 2.5;
-        } else if (grade.equals("C0")) {
-            score = 2.0;
-        } else if (grade.equals("D+")) {
-            score = 1.5;
-        } else if (grade.equals("D0")) {
-            score = 1.0;
-        } else if (grade.equals("F")) {
-            score = 0.0;
-        } else { // P일 경우
-            score = 0;
+        switch (grade) {
+            case "A+":
+                return 4.5;
+            case "A0":
+                return 4.0;
+            case "B+":
+                return 3.5;
+            case "B0":
+                return 3.0;
+            case "C+":
+                return 2.5;
+            case "C0":
+                return 2.0;
+            case "D+":
+                return 1.5;
+            case "D0":
+                return 1.0;
+            default:
+                return 0.0;
         }
-        return score;
     }
 }
