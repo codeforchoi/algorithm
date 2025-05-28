@@ -16,7 +16,7 @@ public class Main {
             line++;
         }
 
-        if (line % 2 == 0) {
+        if ((line & 1) == 0) {
             num = x;
             den = line - x + 1;
         } else {
