@@ -9,13 +9,11 @@ public class Main {
         int start = Integer.parseInt(br.readLine());
         int end = Integer.parseInt(br.readLine());
         int totalSum = 0;
-        int min = end + 1;
+        int min = -1;
 
         for (int i = start; i <= end; i++) {
+            if (i == 1) continue;
             boolean flag = true;
-            if (i == 1) {
-                flag = false;
-            }
 
             for (int j = 2; j <= Math.sqrt(i); j++) {
                 if (i % j == 0) {
@@ -23,15 +21,17 @@ public class Main {
                     break;
                 }
             }
+
             if (flag) {
                 totalSum += i;
-                if (i < min) {
+                if (min == -1) {
                     min = i;
                 }
             }
         }
-        if (totalSum == 0) {
-            sb.append(-1);
+        
+        if (min == -1) {
+            sb.append(min);
         } else {
             sb.append(totalSum).append("\n").append(min);
         }
