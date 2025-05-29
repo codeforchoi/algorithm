@@ -8,28 +8,28 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         int start = Integer.parseInt(br.readLine());
         int end = Integer.parseInt(br.readLine());
+
+        boolean[] isPrime = new boolean[end + 1];
+        isPrime[0] = isPrime[1] = true;
+
+        for (int i = 2; i * i <= end; i++) {
+            if(isPrime[i]) continue;
+            for (int j = i * i; j <= end; j += i) {
+                isPrime[j] = true;
+            }
+        }
+
         int totalSum = 0;
         int min = -1;
-
         for (int i = start; i <= end; i++) {
-            if (i == 1) continue;
-            boolean flag = true;
-
-            for (int j = 2; j <= Math.sqrt(i); j++) {
-                if (i % j == 0) {
-                    flag = false;
-                    break;
-                }
-            }
-
-            if (flag) {
+            if (!isPrime[i]) {
                 totalSum += i;
                 if (min == -1) {
                     min = i;
                 }
             }
         }
-        
+
         if (min == -1) {
             sb.append(min);
         } else {
