@@ -11,31 +11,27 @@ public class Main {
 
         while (true) {
             st = new StringTokenizer(br.readLine());
-            int[] sides = new int[3];
-            int maxSide = 0;
-            int sum = 0;
-            for (int i = 0; i < sides.length; i++) {
-                sides[i] = Integer.parseInt(st.nextToken());
-                sum += sides[i];
-                if (sides[i] > maxSide) {
-                    maxSide = sides[i];
-                }
-            }
-
-            if (sides[0] == 0 && sides[1] == 0 && sides[2] == 0) {
+            int a = Integer.parseInt(st.nextToken());
+            int b = Integer.parseInt(st.nextToken());
+            int c = Integer.parseInt(st.nextToken());
+            
+            if (a == 0 && b == 0 && c == 0) {
                 break;
             }
+            
+            int sum = a + b + c;
+            int maxSide = Math.max(a, Math.max(b, c));
 
-            if (sum - maxSide > maxSide) {
-                if (sides[0] == sides[1] && sides[1] == sides[2]) {
+            if (maxSide >= sum - maxSide) {
+                sb.append("Invalid");
+            } else {
+                if (a == b && b == c) {
                     sb.append("Equilateral");
-                } else if (sides[0] == sides[1] || sides[1] == sides[2] || sides[2] == sides[0]) {
+                } else if (a == b || b == c || c == a) {
                     sb.append("Isosceles");
-                } else if (sides[0] != sides[1] && sides[1] != sides[2] && sides[2] != sides[0]) {
+                } else {
                     sb.append("Scalene");
                 }
-            } else {
-                sb.append("Invalid");
             }
             sb.append("\n");
         }
