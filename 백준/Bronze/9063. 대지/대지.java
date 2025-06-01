@@ -17,24 +17,11 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             x[i] = Integer.parseInt(st.nextToken());
             y[i] = Integer.parseInt(st.nextToken());
-        }
 
-        for (int i = 0; i < n; i++) {
-            if (x[i] < minX) {
-                minX = x[i];
-            }
-
-            if (x[i] > maxX) {
-                maxX = x[i];
-            }
-
-            if (y[i] < minY) {
-                minY = y[i];
-            }
-
-            if (y[i] > maxY) {
-                maxY = y[i];
-            }
+            if (x[i] < minX) minX = x[i];
+            if (x[i] > maxX) maxX = x[i];
+            if (y[i] < minY) minY = y[i];
+            if (y[i] > maxY) maxY = y[i];
         }
         area = (maxX - minX) * (maxY - minY);
         System.out.println(area);
