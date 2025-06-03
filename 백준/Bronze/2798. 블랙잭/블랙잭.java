@@ -4,39 +4,37 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
+    private static int n, m, answer;
+    private static int[] numbers;
+    
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(br.readLine());
-        int[] nums = new int[n];
 
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        numbers = new int[n];
+        answer = 0;
+
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
+            numbers[i] = Integer.parseInt(st.nextToken());
         }
 
-        int result = search(nums, n, m);
-        System.out.println(result);
+        dfs(0, 0, 0);
+        System.out.println(answer);
     }
 
-    public static int search(int[] arr, int n, int m) {
-        int result = 0;
-
-        for (int i = 0; i < n - 2; i++) {
-            for (int j = i + 1; j < n - 1; j++) {
-                for (int k = j + 1; k < n; k++) {
-                    int sum = arr[i] + arr[j] + arr[k];
-                    if (sum == m) {
-                        return sum;
-                    }
-
-                    if (result < sum && sum < m) {
-                        result = sum;
-                    }
-                }
+    private static void dfs(int index, int num, int depth) {
+        if (depth == 3) { // 숫자 3개를 선택했다면
+            if (num <= m) {
+                answer = Math.max(answer, num);
             }
+            return;
         }
-        return result;
+
+        for (int i = index; i < n; i++) {
+            dfs(i + 1, num + numbers[i], depth + 1);
+        }
     }
 }
