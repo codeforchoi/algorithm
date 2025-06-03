@@ -1,13 +1,7 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
-        sb.append(1).append("\n").append("0");
-        System.out.println(sb);
+    public static void main(String[] args) {
+        // n에 입력에 상관없이 항상 O(1) 이다.
+        System.out.println(1);
+        System.out.println(0);
     }
 }
