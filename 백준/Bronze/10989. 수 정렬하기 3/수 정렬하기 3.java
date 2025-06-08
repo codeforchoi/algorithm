@@ -9,14 +9,14 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         int[] arr = new int[10001];
 
+        //카운팅 정렬 사용
         for (int i = 0; i < n; i++) {
             arr[Integer.parseInt(br.readLine())]++;
         }
-       
+
         for (int i = 1; i < 10001; i++) {
-            while (arr[i] > 0) {
-                sb.append(i).append("\n");
-                arr[i]--;
+            if (arr[i] > 0) {
+                sb.append((i + "\n").repeat(arr[i]));
             }
         }
         sb.setLength(sb.length() - 1);
