@@ -24,10 +24,9 @@ public class Main {
 
         String prev = "";
         for (String word : words) {
-            if (prev.equals(word)) {
-                continue;
+            if (!prev.equals(word)) {
+                sb.append(word).append("\n");
             }
-            sb.append(word).append("\n");
             prev = word;
         }
         sb.setLength(sb.length() - 1);
