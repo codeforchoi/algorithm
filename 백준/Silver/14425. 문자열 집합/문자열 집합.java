@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -9,19 +11,16 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        String[] s = new String[n];
+        Map<String, Integer> map = new HashMap<>();
         int count = 0;
 
         for (int i = 0; i < n; i++) {
-            s[i] = br.readLine();
+            map.put(br.readLine(), 0);
         }
 
         for (int i = 0; i < m; i++) {
-            String str = br.readLine();
-            for (int j = 0; j < n; j++) {
-                if (str.equals(s[j])) {
-                    count++;
-                }
+            if (map.containsKey(br.readLine())) {
+                count++;
             }
         }
         System.out.println(count);
