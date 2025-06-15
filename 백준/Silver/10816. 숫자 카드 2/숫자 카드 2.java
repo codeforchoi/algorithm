@@ -14,25 +14,18 @@ public class Main {
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            int num = Integer.parseInt(st.nextToken());
-            if (ownedCard.containsKey(num)) {
-                ownedCard.put(num, ownedCard.get(num) + 1);
-            } else {
-                ownedCard.put(num, 1);
-            }
+            int key = Integer.parseInt(st.nextToken());
+            // getOrDefault(key, 0) 메서드
+            // key 키가 있으면 value값을 반환하고, 없으면 두번째 인자인 0을 반환
+            ownedCard.put(key, ownedCard.getOrDefault(key, 0) + 1);
         }
 
         StringBuilder sb = new StringBuilder();
         int m = Integer.parseInt(br.readLine());
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < m; i++) {
-            int num = Integer.parseInt(st.nextToken());
-            if (ownedCard.containsKey(num)) {
-                sb.append(ownedCard.get(num));
-            } else {
-                sb.append(0);
-            }
-            sb.append(" ");
+            int key = Integer.parseInt(st.nextToken());
+            sb.append(ownedCard.getOrDefault(key, 0)).append(" ");
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
