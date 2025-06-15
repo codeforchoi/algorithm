@@ -17,21 +17,18 @@ public class Main {
 
         List<String> list = new ArrayList<>();
         StringBuilder sb = new StringBuilder();
-        int count = 0;
         for (int i = 0; i < m; i++) {
             String str = br.readLine();
             if (set.contains(str)) {
                 list.add(str);
-                count++;
             }
         }
 
         Collections.sort(list);
-        sb.append(String.valueOf(count)).append("\n");
+        sb.append(list.size()).append("\n");
 
         for (String s : list) {
             sb.append(s).append("\n");
-
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
