@@ -14,14 +14,10 @@ public class Main {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
-            sb.append(lcm(a, b)).append("\n");
+            sb.append(a * b / gcd(a,b)).append("\n");
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
-    }
-
-    public static int lcm(int a, int b) {
-        return a * b / gcd(a, b);
     }
 
     public static int gcd(int a, int b) {
