@@ -9,26 +9,20 @@ public class Main {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < t; i++) {
-            sb.append(findMinPrime(Long.parseLong(br.readLine()))).append("\n");
+            long num = Long.parseLong(br.readLine());
+            while (!is_Prime(num)) {
+                num++;
+            }
+            sb.append(num).append("\n");
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
     }
 
-    public static long findMinPrime(long num) {
-        if (is_Prime(num)) return num;
-        else return findMinPrime(++num);
-    }
-
     public static boolean is_Prime(long num) {
-        if (num < 2) {
-            return false;
-        }
-
+        if (num < 2) return false;
         for (long i = 2; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                return false;
-            }
+            if (num % i == 0) return false;
         }
         return true;
     }
