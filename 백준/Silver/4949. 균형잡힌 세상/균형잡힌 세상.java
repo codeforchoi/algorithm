@@ -25,14 +25,12 @@ public class Main {
                     stack.push(ch);
                     break;
                 case ')':
-                    if(stack.isEmpty()) return "no";
-                    else if (stack.peek() == '[') return "no";
-                    else if (stack.peek() == '(') stack.pop();
+                    if(stack.isEmpty() || stack.peek() != '(') return "no";
+                    else stack.pop();
                     break;
                 case ']':
-                    if(stack.isEmpty()) return "no";
-                    else if (stack.peek() == '(') return "no";
-                    else if (stack.peek() == '[') stack.pop();
+                    if(stack.isEmpty() || stack.peek() != '[') return "no";
+                    else stack.pop();
                 default:
                     break;
             }
