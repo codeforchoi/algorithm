@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Stack;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -18,24 +17,27 @@ public class Main {
     }
 
     public static String isVPS(String line) {
-        Stack<Character> stack = new Stack<>();
+        char[] stack = new char[line.length()];
+        int size = 0;
+        
         for (char ch : line.toCharArray()) {
             switch(ch) {
                 case '(': case'[':
-                    stack.push(ch);
+                    stack[size] = ch;
+                    size++;
                     break;
                 case ')':
-                    if(stack.isEmpty() || stack.peek() != '(') return "no";
-                    else stack.pop();
+                    if(size == 0 || stack[size - 1] != '(') return "no";
+                    else size--;
                     break;
                 case ']':
-                    if(stack.isEmpty() || stack.peek() != '[') return "no";
-                    else stack.pop();
+                    if(size == 0  || stack[size - 1] != '[') return "no";
+                    else size--;
                 default:
                     break;
             }
         }
-        if (stack.isEmpty()) return "yes";
+        if (size == 0) return "yes";
         else return "no";
     }
 }
