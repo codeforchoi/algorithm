@@ -17,8 +17,7 @@ public class Main {
 
         while (deque.size() > 1) {
             deque.pollFirst();
-            int num = deque.pollFirst();
-            deque.offerLast(num);
+            deque.offerLast(deque.pollFirst());
         }
         System.out.println(deque.peekFirst());
     }
