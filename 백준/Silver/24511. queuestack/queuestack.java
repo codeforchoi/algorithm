@@ -3,7 +3,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
-import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -37,7 +36,7 @@ public class Main {
         Deque<Integer> queueStack = new ArrayDeque<>();
         for (int i = 0; i < n; i++) {
             if (type[i] == 0) {
-                queueStack.offerFirst(currentValue[i]); // 앞에 넣어야한다.
+                queueStack.offerFirst(currentValue[i]);
             }
         }
 
