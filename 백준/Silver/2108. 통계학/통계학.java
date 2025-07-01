@@ -1,49 +1,60 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
+
+        int[] arr = new int[8001]; // 입력값이 -4000 ~ 4000
         double sum = 0;
+        int max = -4001;
+        int min = 4001;
 
         for (int i = 0; i < n; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
-            sum += arr[i];
+            int num = Integer.parseInt(br.readLine());
+            arr[num + 4000]++;
+            sum += num;
+
+            if (num > max) {
+                max = num;
+            }
+            if (num < min) {
+                min = num;
+            }
         }
-        Arrays.sort(arr);
 
-        //최빈값 계산
-        int mode = arr[0];
-        int nowNum = arr[0];
-        int count = 0;
-        int max = 0;
-        boolean secondCheck = false;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == nowNum) {
-                count++;
-            } else {
-                nowNum = arr[i];
-                count = 1;
+        int middleCount = 0;
+        int middle = 0;
+        int maxCount = 0;
+        int mode = 0;
+        boolean isSecond = false;
+
+        for (int i = min + 4000; i <= max + 4000; i++) {
+            // 중앙값
+            if (arr[i] > 0) {
+                if (middleCount < (n + 1) / 2) {
+                    middleCount += arr[i];
+                    middle = i - 4000;
+                }
             }
 
-            if (count > max) {
-                max = count;
-                mode = nowNum;
-                secondCheck = true;
-            } else if (count == max && secondCheck == true) {
-                mode = nowNum;
-                secondCheck = false;
+            // 최빈값
+            if (arr[i] > maxCount) {
+                maxCount = arr[i];
+                mode = i - 4000;
+                isSecond = true;
+            } else if (arr[i] == maxCount && isSecond) {
+                mode = i - 4000;
+                isSecond = false;
             }
         }
         sb.append(Math.round(sum / n)).append("\n");
-        sb.append(arr[(n - 1) / 2]).append("\n");
+        sb.append(middle).append("\n");
         sb.append(mode).append("\n");
-        sb.append(arr[n - 1] - arr[0]);
+        sb.append(max - min);
         System.out.println(sb);
     }
 }
