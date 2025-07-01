@@ -8,26 +8,19 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int answer = 0;
 
-        if (n == 1) {
+        int min = 1000001;
+        int max = 0;
+        while (n-- > 0) {
             int num = Integer.parseInt(st.nextToken());
-            answer = num * num;
-        } else {
-            int min = 1000001;
-            int max = 0;
-            while (n-- > 0) {
-                int num = Integer.parseInt(st.nextToken());
-                if (num < min) {
-                    min = num;
-                }
-
-                if (num > max) {
-                    max = num;
-                }
+            if (num < min) {
+                min = num;
             }
-            answer = min * max;
+
+            if (num > max) {
+                max = num;
+            }
         }
-        System.out.println(answer);
+        System.out.println(min * max);
     }
 }
