@@ -5,14 +5,22 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int[] price = new int[5];
-        int total = 0;
+        int mintBurger = 2001;
+        int minBeverage = 2001;
 
-        for (int i = 0; i < 5; i++) {
-            price[i] = Integer.parseInt(br.readLine());
+        for (int i = 0; i < 3; i++) {
+            int price = Integer.parseInt(br.readLine());
+            if (price < mintBurger) {
+                mintBurger = price;
+            }
         }
 
-        total = Math.min(Math.min(price[0], price[1]), price[2]) + Math.min(price[3], price[4]) - 50;
-        System.out.println(total);
+        for (int i = 0; i < 2; i++) {
+            int price = Integer.parseInt(br.readLine());
+            if (price < minBeverage) {
+                minBeverage = price;
+            }
+        }
+        System.out.println(mintBurger + minBeverage - 50);
     }
 }
