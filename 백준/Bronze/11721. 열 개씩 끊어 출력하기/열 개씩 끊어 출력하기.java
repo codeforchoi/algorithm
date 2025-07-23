@@ -7,13 +7,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         String line = br.readLine();
-        int n = line.length() / 10;
-        int index = 0;
-        for (int i = 0; i < n; i++) {
-            sb.append(line.substring(index, index + 10)).append("\n");
-            index += 10;
+        for (int i = 0; i < line.length(); i += 10) {
+            if (i + 10 < line.length()) {
+                sb.append(line.substring(i, i + 10)).append("\n");
+            } else {
+                sb.append(line.substring(i));
+            }
         }
-        sb.append(line.substring(n * 10));
         System.out.println(sb);
     }
 }
