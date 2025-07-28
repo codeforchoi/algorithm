@@ -7,6 +7,6 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int h = Integer.parseInt(br.readLine());
         int w = Integer.parseInt(br.readLine());
-        System.out.println(Math.min(h, w) * 50);
+        System.out.println(h > w ? w * 50 : h * 50);
     }
 }
