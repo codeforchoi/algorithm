@@ -6,13 +6,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-        int n;
-        while (true) {
-            n = Integer.parseInt(br.readLine());
-            if (n <= 10) {
-                break;
-            }
-        }
+        int n = Integer.parseInt(br.readLine());
         for (int i = 0; i < n; i++) {
             sb.append(br.readLine().toLowerCase()).append("\n");
         }
