@@ -7,10 +7,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         String id = br.readLine();
-        String emoji = ":fan:";
-        sb.append(emoji + emoji + emoji).append("\n");
-        sb.append(emoji + ":" + id + ":" + emoji).append("\n");
-        sb.append(emoji + emoji + emoji).append("\n");
+        sb.append(":fan::fan::fan:\n:fan::" + id + "::fan:\n:fan::fan::fan:");
         System.out.println(sb);
     }
 }
