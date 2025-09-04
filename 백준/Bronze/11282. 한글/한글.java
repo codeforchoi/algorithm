@@ -5,7 +5,9 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
-        System.out.println((char)(n + 44031));
+        sb.append((char) (n + 44031));
+        System.out.println(sb);
     }
 }
