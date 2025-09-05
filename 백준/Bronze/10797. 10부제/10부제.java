@@ -6,6 +6,7 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int day = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
         int count = 0;
@@ -15,6 +16,7 @@ public class Main {
                 count++;
             }
         }
-        System.out.println(count);
+        sb.append(count);
+        System.out.println(sb);
     }
 }
