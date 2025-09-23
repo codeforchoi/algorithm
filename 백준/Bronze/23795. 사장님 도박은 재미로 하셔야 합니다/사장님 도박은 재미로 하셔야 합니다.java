@@ -6,9 +6,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int total = 0;
-        int n;
         while (true) {
-            n = Integer.parseInt(br.readLine());
+            int n = Integer.parseInt(br.readLine());
             if (n == -1) {
                 break;
             }
