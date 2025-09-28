@@ -8,9 +8,8 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int a = Integer.parseInt(st.nextToken());
+        int a = Integer.parseInt(st.nextToken()) / 2;
         int b = Integer.parseInt(st.nextToken());
-        int sum = a / 2 + b;
-        System.out.println(Math.min(n, sum));
+        System.out.println(Math.min(n, a + b));
     }
 }
