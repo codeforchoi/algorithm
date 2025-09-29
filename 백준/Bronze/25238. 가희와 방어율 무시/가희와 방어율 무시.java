@@ -9,14 +9,10 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
-        if (a < 100) {
-            System.out.println(1);
+        if (a * (100 - b) / 100 >= 100) {
+            System.out.println(0);
         } else {
-            if (a * (100 - b) / 100 < 100) {
-                System.out.println(1);
-            } else {
-                System.out.println(0);
-            }
+            System.out.println(1);
         }
     }
 }
