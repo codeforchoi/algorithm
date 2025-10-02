@@ -15,14 +15,11 @@ public class Main {
             int a = Integer.parseInt(st.nextToken());
             int d = Integer.parseInt(st.nextToken());
             int g = Integer.parseInt(st.nextToken());
+            score = a * (d + g);
             if (a == d + g) {
-                score = 2 * a * a;
-            } else {
-                score = a * (d + g);
+                score *= 2;
             }
-            if (score > maxScore) {
-                maxScore = score;
-            }
+            maxScore = Math.max(maxScore, score);
         }
         System.out.println(maxScore);
     }
