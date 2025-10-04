@@ -9,6 +9,6 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int a = Integer.parseInt(st.nextToken());
         int b = Integer.parseInt(st.nextToken());
-        System.out.println(a < b * 2 ? a / 2 : b);
+        System.out.println(Math.min(a / 2, b));
     }
 }
