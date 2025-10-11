@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -16,12 +15,10 @@ public class Main {
         for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-
-        int[] sum = new int[n - 1];
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < n - 1; i++) {
-            sum[i] = arr[i] + arr[i + 1];
+            min = Math.min(min, arr[i] + arr[i + 1]);
         }
-        Arrays.sort(sum);
-        System.out.println(sum[0] * x);
+        System.out.println(min * x);
     }
 }
