@@ -8,13 +8,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
+        int totalHours = (n - 1) * 8;
+
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int totalHours = 0;
         for (int i = 0; i < n; i++) {
             totalHours += Integer.parseInt(st.nextToken());
-            totalHours += 8;
         }
-        totalHours -= 8;
+        
         sb.append(totalHours / 24).append(" ").append(totalHours % 24);
         System.out.println(sb);
     }
