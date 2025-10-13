@@ -5,17 +5,19 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         String input = br.readLine();
         if (input.equals("fdsajkl;") || input.equals("jkl;fdsa")) {
-            System.out.println("in-out");
+            sb.append("in-out");
         } else if (input.equals("asdf;lkj") || input.equals(";lkjasdf")) {
-            System.out.println("out-in");
+            sb.append("out-in");
         } else if (input.equals("asdfjkl;")) {
-            System.out.println("stairs");
+            sb.append("stairs");
         } else if (input.equals(";lkjfdsa")) {
-            System.out.println("reverse");
+            sb.append("reverse");
         } else {
-            System.out.println("molu");
+            sb.append("molu");
         }
+        System.out.println(sb);
     }
 }
