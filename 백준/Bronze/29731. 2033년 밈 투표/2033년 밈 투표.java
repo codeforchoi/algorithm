@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
-        String[] arr = new String[] {
+        List<String> list = List.of(
                 "Never gonna give you up",
                 "Never gonna let you down",
                 "Never gonna run around and desert you",
@@ -14,17 +15,14 @@ public class Main {
                 "Never gonna say goodbye",
                 "Never gonna tell a lie and hurt you",
                 "Never gonna stop"
-        };
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            String input = br.readLine();
-            for (String str : arr) {
-                if (input.equals(str)) {
-                    count++;
-                    break;
-                }
+        );
+        boolean flag = true;
+        while (n-- > 0) {
+            if (!list.contains(br.readLine())) {
+                flag = false;
+                break;
             }
         }
-        System.out.println(count == n ? "No" : "Yes");
+        System.out.println(flag ? "No" : "Yes");
     }
 }
