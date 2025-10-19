@@ -12,12 +12,9 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         int k = Integer.parseInt(st.nextToken());
         int x = Integer.parseInt(st.nextToken());
-        int count = 0;
-        for (int i = k - x; i <= k + x; i++) {
-            if (i >= a && i <= b) {
-                count++;
-            }
-        }
-        System.out.println(count == 0 ? "IMPOSSIBLE" : count);
+
+        int left = Math.max(a, k - x);
+        int right = Math.min(b, k + x);
+        System.out.println(left > right ? "IMPOSSIBLE" : right - left + 1);
     }
 }
