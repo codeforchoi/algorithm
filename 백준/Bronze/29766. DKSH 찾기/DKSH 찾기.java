@@ -6,7 +6,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String str = br.readLine();
-        int length = str.replace("DKSH", "").length();
-        System.out.println((str.length() - length) / 4);
+        System.out.println(str.split("DKSH", -1).length - 1);
     }
 }
