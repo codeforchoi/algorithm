@@ -11,8 +11,7 @@ public class Main {
         int  total = 0;
         while (n-- > 0) {
             st = new StringTokenizer(br.readLine());
-            int length = Integer.parseInt(st.nextToken());
-            switch(length) {
+            switch(Integer.parseInt(st.nextToken())) {
                 case 136: total += 1000; break;
                 case 142: total += 5000; break;
                 case 148: total += 10000; break;
