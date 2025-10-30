@@ -10,6 +10,7 @@ public class Main {
             String str = br.readLine();
             if (str.contains("S")) {
                 System.out.println(str);
+                break;
             }
         }
     }
