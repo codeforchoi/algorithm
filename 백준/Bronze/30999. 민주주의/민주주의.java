@@ -18,7 +18,7 @@ public class Main {
                     count++;
                 }
             }
-            if (count > m / 2) {
+            if (count > (m - count)) {
                 totalCount++;
             }
         }
