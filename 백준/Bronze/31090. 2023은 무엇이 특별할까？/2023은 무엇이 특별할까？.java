@@ -8,10 +8,9 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         int t = Integer.parseInt(br.readLine());
         for (int i = 0; i < t; i++) {
-            String str = br.readLine();
-            int year = Integer.parseInt(str) + 1;
-            int div = Integer.parseInt(str.substring(str.length() - 2));
-            if (year % div == 0) {
+            int year = Integer.parseInt(br.readLine());
+            int div = year % 100;
+            if ((year + 1) % div == 0) {
                 sb.append("Good");
             } else {
                 sb.append("Bye");
