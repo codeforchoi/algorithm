@@ -10,9 +10,9 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < n; i++) {
-            sb.append(st.nextToken()).append("DORO").append(" ");
+            if(i > 0) sb.append(" ");
+            sb.append(st.nextToken()).append("DORO");
         }
-        sb.setLength(sb.length() - 1);
         System.out.println(sb);
     }
 }
