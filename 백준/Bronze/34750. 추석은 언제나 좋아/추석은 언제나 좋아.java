@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
         int parents = 0;
         if (n >= 1000_000) {
@@ -16,6 +17,7 @@ public class Main {
         } else {
             parents = n / 100 * 5;
         }
-        System.out.println(parents + " " + (n - parents));
+        sb.append(parents).append(" ").append(n - parents);
+        System.out.println(sb);
     }
 }
