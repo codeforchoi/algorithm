@@ -1,0 +1,21 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int parents = 0;
+        if (n >= 1000_000) {
+            parents = n / 100 * 20;
+        } else if (n >= 500_000) {
+            parents = n / 100 * 15;
+        } else if (n >= 100_000) {
+            parents = n / 100 * 10;
+        } else {
+            parents = n / 100 * 5;
+        }
+        System.out.println(parents + " " + (n - parents));
+    }
+}
