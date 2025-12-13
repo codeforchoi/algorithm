@@ -9,6 +9,6 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
-        System.out.println(n % m == 0 ? n / m : n / m + 1);
+        System.out.println((n + m - 1) / m);
     }
 }
