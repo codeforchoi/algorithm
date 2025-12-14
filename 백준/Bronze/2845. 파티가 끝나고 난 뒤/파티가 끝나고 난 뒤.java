@@ -10,10 +10,12 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int l = Integer.parseInt(st.nextToken());
         int p = Integer.parseInt(st.nextToken());
-        int people = l * p;
+        int standard = l * p;
+
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < 5; i++) {
-            sb.append(Integer.parseInt(st.nextToken()) - people).append(" ");
+            int target = Integer.parseInt(st.nextToken());
+            sb.append(target - standard).append(" ");
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
