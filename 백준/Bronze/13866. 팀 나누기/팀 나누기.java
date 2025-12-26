@@ -7,12 +7,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int[] arr = new int[4];
-        for (int i = 0; i < 4; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
-        }
-        int teamA = arr[0] + arr[3];
-        int teamB = arr[1] + arr[2];
-        System.out.println(Math.abs(teamA - teamB));
+        int a = Integer.parseInt(st.nextToken());
+        int b = Integer.parseInt(st.nextToken());
+        int c = Integer.parseInt(st.nextToken());
+        int d = Integer.parseInt(st.nextToken());
+        System.out.println(Math.abs(a - b - c + d));
     }
 }
