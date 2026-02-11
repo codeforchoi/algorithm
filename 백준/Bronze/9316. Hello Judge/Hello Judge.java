@@ -8,7 +8,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
         for (int i = 0; i < n; i++) {
-            sb.append("Hello World, Judge " + (i + 1) + "!\n");
+            sb.append("Hello World, Judge ").append(i + 1).append("!\n");
         }
         sb.setLength(sb.length() - 1);
         System.out.println(sb);
