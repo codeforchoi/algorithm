@@ -1,9 +1,11 @@
-import java.util.stream.IntStream;
-
 class Solution {
     public int solution(int n) {
-        return IntStream.range(2, n)
-                .filter(x -> n % x == 1)
-                .findFirst().orElse(0);
+        int x = 2;
+        while (true) {
+            if (n % x == 1) {
+                return x;
+            }
+            x++;
+        }
     }
 }
