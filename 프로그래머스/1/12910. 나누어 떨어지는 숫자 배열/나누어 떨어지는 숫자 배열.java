@@ -9,7 +9,7 @@ class Solution {
         for (Integer element : arr) {
             if(element % divisor == 0) list.add(element);
         }
-        if (list.size() == 0) list.add(-1);
+        if (list.isEmpty()) list.add(-1);
         Collections.sort(list);
         return list.stream().mapToInt(Integer::intValue).toArray();
     }
