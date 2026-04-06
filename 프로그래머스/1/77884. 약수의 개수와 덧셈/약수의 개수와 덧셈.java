@@ -8,12 +8,7 @@ class Solution {
                     count++;
                 }
             }
-
-            if (count % 2 == 0) {
-                sum += i;
-            } else {
-                sum -= i;
-            }
+            sum += i * ((count % 2 == 0) ? 1 : -1);
         }
         return sum;
     }
