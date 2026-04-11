@@ -1,17 +1,15 @@
-import java.util.Stack;
+import java.util.Arrays;
 
 public class Solution {
     public int[] solution(int []arr) {
-        Stack<Integer> stack = new Stack<>();
+        int[] temp = new int[arr.length];
+        int index = 0;
         for (int n : arr) {
-            if (stack.isEmpty() || stack.peek() != n) {
-                stack.push(n);
+            if (index == 0 || temp[index - 1] != n) {
+                temp[index++] = n;
             }
         }
-        int[] result = new int[stack.size()];
-        for (int i = result.length - 1; i >= 0; i--) {
-            result[i] = stack.pop();
-        }
-        return result;
+        int[] result = new int[index];
+        return Arrays.copyOfRange(temp, 0, index);
     }
 }
