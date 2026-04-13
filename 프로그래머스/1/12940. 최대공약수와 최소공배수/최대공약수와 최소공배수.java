@@ -1,14 +1,11 @@
 class Solution {
     public int[] solution(int n, int m) {
-        int[] result = new int[2];
-        int nm = n * m;
-        while (m != 0) {
-            int r = n % m;
-            n = m;
-            m = r;
-        }
-        result[0] = n;
-        result[1] = nm / n;
-        return result;
+        int g = gcd(n, m);
+        return new int[]{g, n * m / g};
+    }
+    
+    private int gcd(int a, int b) {
+        if(b == 0) return a;
+        return gcd(b, a % b);
     }
 }
