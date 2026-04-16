@@ -62,8 +62,8 @@ public class Main {
 
                 // 벽이거나 아직 부술 수 있는 횟수가 남은 경우
                 if (map[nx][ny] == 1 && now.wall < k) {
-                    if (!visited[nx][ny][now.wall]) {
-                        visited[nx][ny][now.wall] = true;
+                    if (!visited[nx][ny][now.wall + 1]) {
+                        visited[nx][ny][now.wall + 1] = true;
                         q.offer(new Node(nx, ny, now.dist + 1, now.wall + 1));
                     }
                 }
