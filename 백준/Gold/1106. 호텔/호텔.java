@@ -8,23 +8,16 @@ public class Main {
         int C = Integer.parseInt(st.nextToken());
         int N = Integer.parseInt(st.nextToken());
 
-        int[][] city = new int[N][2];
-        int maxNum = 0;
-        for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
-            city[i][0] = Integer.parseInt(st.nextToken());
-            city[i][1] = Integer.parseInt(st.nextToken());
-            maxNum = Math.max(maxNum, city[i][1]);
-        }
-
-        int[] dp = new int[C + maxNum]; // C - 1 상태에서 + maxNum이 나올 수 있는 최대명수이다.
+        int[] dp = new int[C + 100]; // C - 1 상태에서 + 100이 나올 수 있는 최대명수이다.
         Arrays.fill(dp, Integer.MAX_VALUE); // 모두 가장 큰 값으로 계산된 적이 없는 것으로 초기화
         dp[0] = 0;
 
         for (int i = 0; i < N; i++) {
-            int cost = city[i][0];
-            int people = city[i][1];
-            for (int j = people; j < C + maxNum; j++) {
+            st = new StringTokenizer(br.readLine());
+            int cost = Integer.parseInt(st.nextToken());
+            int people = Integer.parseInt(st.nextToken());
+
+            for (int j = people; j < C + 100; j++) {
                 // 해당 명수에서 people를 홍보하기 전 비용이 계산되어 있다면 최소를 비교한다.
                 if (dp[j - people] != Integer.MAX_VALUE) {
                     dp[j] = Math.min(dp[j], cost + dp[j - people]);
@@ -33,7 +26,7 @@ public class Main {
         }
 
         int minCost = Integer.MAX_VALUE;
-        for (int i = C; i < C + maxNum; i++) {
+        for (int i = C; i < C + 100; i++) {
             minCost = Math.min(minCost, dp[i]);
         }
         System.out.println(minCost);
