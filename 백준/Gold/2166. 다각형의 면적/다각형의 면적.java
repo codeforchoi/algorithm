@@ -19,10 +19,13 @@ public class Main {
         points[N][0] = points[0][0];
         points[N][1] = points[0][1];
 
-        long area = 0;
+        long sumA = 0;
+        long sumB = 0;
         for (int i = 0; i < N; i++) {
-            area += (long) points[i][0] * points[i + 1][1] - (long) points[i + 1][0] * points[i][1];
+            sumA += (long) points[i][0] * points[i + 1][1];
+            sumB += (long) points[i + 1][0] * points[i][1];
         }
-        System.out.printf("%.1f", Math.abs(area / 2.0));
+        double area = Math.abs((sumA - sumB) / 2.0);
+        System.out.printf("%.1f", area);
     }
 }
