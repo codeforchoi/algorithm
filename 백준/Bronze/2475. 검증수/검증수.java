@@ -1,18 +1,22 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        int sum = 0;
+        int[] uniqueIds = new int[5];
         for (int i = 0; i < 5; i++) {
-            int n = Integer.parseInt(st.nextToken());
-            sum += (int) Math.pow(n, 2);
+            uniqueIds[i] = Integer.parseInt(st.nextToken());
         }
-        sum %= 10;
-        System.out.println(sum);
+        System.out.println(generateCheckDigit(uniqueIds));
+    }
+
+    private static int generateCheckDigit(int[] ids) {
+        int sum = 0;
+        for (int id : ids) {
+            sum += Math.pow(id, 2);
+        }
+        return sum % 10;
     }
 }
