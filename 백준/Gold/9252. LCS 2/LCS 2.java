@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-// LCS(Longest Common Subsequence, 최장 공통 부분 수열) + 역추적
+// LCS(Longest Common Subsequence, 최장 공통 부분 수열) + 역추적 (재귀 사용)
 public class Main {
     static char[] A, B;
     static int[][] dp;
