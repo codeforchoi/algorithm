@@ -20,13 +20,13 @@ public class Main {
                 for (int k = 0; k < (1 << 10); k++) { // 각 숫자가 모두 나왔는지 확인
                     int nextVisited = k | (1 << j); // 비트마스크로 방문 처리
 
-                    // j 숫자가 0이면 올라가는 경우만 존재
-                    if (j == 0) { //
-                        dp[i][j][nextVisited] += dp[i - 1][j + 1][k] % MOD;
-                    } else if (j == 9) { // j 숫자가 9이면 내려가는 경우만 존재
+                    // j가 0이 아닌 경우들 계산, 내려가는 숫자 계산들
+                    if (j - 1 >= 0) {
                         dp[i][j][nextVisited] += dp[i - 1][j - 1][k] % MOD;
-                    } else { // 둘다 아닌 경우 내려가거나 올라갈 수 있는 경우 존재 가능
-                        dp[i][j][nextVisited] += dp[i - 1][j - 1][k] % MOD + dp[i - 1][j + 1][k] % MOD;
+                    }
+                    // j가 9가 아닌 경우들 계산, 올라가는 숫자 계산들
+                    if (j + 1 <= 9) {
+                        dp[i][j][nextVisited] += dp[i - 1][j + 1][k] % MOD;
                     }
 
                     dp[i][j][nextVisited] %= MOD;
