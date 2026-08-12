@@ -1,51 +1,37 @@
 import java.util.*;
 
-class Solution {
-    public class Stage {
-		private int index;
-		private double rate;
-		
-		public Stage(int index, double rate) {
-			super();
-			this.index = index;
-			this.rate = rate;
-		}
-
-		public int getIndex() {
-			return index;
-		}
-
-		public double getRate() {
-			return rate;
-		}				
-	}
-    
+class Solution {   
     public int[] solution(int N, int[] stages) {
-        List<Stage> list = new ArrayList<>();
-		for(int i = 1; i <= N; i++) {
-			int count = 0;
-			int count_fail = 0;
-			for(int j = 0; j < stages.length; j++) {
-				if(stages[j] > i) {
-					count++;
-				} else if (stages[j] == i) {
-					count_fail++;
-					count++;
-				}
-			}
-			double rate = count == 0 ? 0 : (double) count_fail / count;			
-			list.add(new Stage(i, rate));
+        int[] challenger = new int[N + 2]; // 0인덱스 빼고 N인덱스까지라서 + 2
+		for (int stage : stages) {
+			challenger[stage]++;
 		}
+
+		Map<Integer, Double> fails = new HashMap<>();
+		double total = stages.length;
+
+		for (int i = 1; i <= N; i++) {
+			if (challenger[i] == 0) {
+				fails.put(i, 0.);
+			} else {
+				fails.put(i, challenger[i] / total);
+				total -= challenger[i]; // 뒤에 앞에 스테이지 사람들은 뒤에 스테이지를 도달하지 못했을 것이므로
+			}
+		}
+
+//		return fails.entrySet().stream()
+//				.sorted((o1, o2) -> o1.getValue().equals(o2.getValue()) ? Integer.compare(o1.getKey(), o2.getKey())
+//						: Double.compare(o2.getValue(), o1.getValue()))
+//				.mapToInt(HashMap.Entry::getKey).toArray();
 		
-		Collections.sort(list, (o1, o2) -> {
-			return Double.compare(o2.getRate(), o1.getRate());
-		});
-		
-		int[] answer = new int[N];
-		for(int i = 0; i < list.size(); i++) {
-			answer[i] = list.get(i).getIndex();
-		}	
-        return answer;
+		return fails.entrySet().stream()
+				.sorted((o1, o2) -> {
+					if(o1.getValue().equals(o2.getValue())) {
+						return Integer.compare(o1.getKey(), o2.getKey());
+					} else {
+						return Double.compare(o2.getValue(), o1.getValue());
+					}
+				}).mapToInt(HashMap.Entry::getKey).toArray();
         
     }    
 }
