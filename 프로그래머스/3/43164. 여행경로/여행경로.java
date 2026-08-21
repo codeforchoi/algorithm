@@ -6,34 +6,29 @@ class Solution {
 	private static String[] result;
     
     public String[] solution(String[][] tickets) {
-        Arrays.sort(tickets, (o1, o2) -> o1[1].compareTo(o2[1]));
+        Map<String, PriorityQueue<String>> graph = new HashMap<>();
 		
-		n = tickets.length;
-		
-		visited = new boolean[n];
-		result = new String[n + 1];
-		result[0] = "ICN";
-        
-		dfs(tickets, "ICN", 0);        
-        return result;
-    }
-    
-    private boolean dfs(String[][] tickets, String start, int depth) {
-		if(depth == n) {
-			return true;
+		for(String[] ticket : tickets) {
+			// key값이 없으면 k (key)에 value를 PriorityQueue를 생성해서 넣어주고 
+			// value를 반환하므로 offer 해줄 수 있다.
+			graph.computeIfAbsent(ticket[0], k -> new PriorityQueue<>())
+				.offer(ticket[1]);
 		}
 		
-		for(int i = 0; i < n; i++) {
-			if(!visited[i] && tickets[i][0].equals(start)) {
-				visited[i] = true;				
-				result[depth + 1] = tickets[i][1];
-				
-				if(dfs(tickets, tickets[i][1], depth + 1)) {
-					return true;
-				}
-				visited[i] = false; // 탐색이 끝나면 복구				
-			}
-		}	
-		return false;
+		// 앞에 삽일할 것이므로 LinkedList 선택
+		LinkedList<String> route = new LinkedList<>();
+		dfs("ICN", graph, route);
+		return route.toArray(new String[0]);
+    }
+    
+    private void dfs(String start, Map<String, PriorityQueue<String>> graph, LinkedList<String> route) {		
+		PriorityQueue<String> pq = graph.get(start);
+		
+		// pq가 null인지 먼저 확인해서 NullPointException 예방
+		while(pq != null && !pq.isEmpty()) {
+			String next = pq.poll();
+			dfs(next, graph, route);
+		}
+		route.addFirst(start);
 	}
 }
