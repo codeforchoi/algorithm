@@ -1,10 +1,6 @@
 import java.util.*;
 
-class Solution {
-    private static boolean[] visited;
-	private static int n;
-	private static String[] result;
-    
+class Solution {   
     public String[] solution(String[][] tickets) {
         Map<String, PriorityQueue<String>> graph = new HashMap<>();
 		
