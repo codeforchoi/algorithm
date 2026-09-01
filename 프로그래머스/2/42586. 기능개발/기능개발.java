@@ -3,29 +3,27 @@ import java.util.*;
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
         Queue<Integer> q = new ArrayDeque<>();
-		List<Integer> list = new ArrayList<>();
 		
-		for(int i = 0; i < progresses.length; i++) {
-			int remain = 100 - progresses[i];
-			int divide = speeds[i];
-			int result = remain / divide;
-			int day = (int) Math.ceil((double)remain / divide);
-			q.offer(day);
+		int n = progresses.length;
+		int[] daysLeft = new int[n];
+		for(int i = 0; i < n; i++) {
+			daysLeft[i] = (int) Math.ceil((100.0 - progresses[i]) / speeds[i]);
 		}
 		
-		int maxPeriod = q.poll();
-		int count = 1;
-		while(!q.isEmpty()) {
-			int period = q.poll();
-			if(period <= maxPeriod) {
+		int count = 0;
+		int maxDay = daysLeft[0];
+		
+		for(int i = 0; i < n; i++) {
+			if(daysLeft[i] <= maxDay) {
 				count++;
 			} else {
-                maxPeriod = period;
-				list.add(count);
+				q.offer(count);
 				count = 1;
-			}			
+				maxDay = daysLeft[i];
+			}
 		}
-		list.add(count);
-		return list.stream().mapToInt(Integer::intValue).toArray();
+		
+		q.offer(count);
+		return q.stream().mapToInt(Integer::intValue).toArray();
     }
 }
