@@ -9,7 +9,7 @@ class Solution {
 			int remain = 100 - progresses[i];
 			int divide = speeds[i];
 			int result = remain / divide;
-			int day = (remain % divide == 0) ? result : result + 1;
+			int day = (int) Math.ceil((double)remain / divide);
 			q.offer(day);
 		}
 		
