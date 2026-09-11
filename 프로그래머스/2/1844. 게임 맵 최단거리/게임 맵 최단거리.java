@@ -1,10 +1,10 @@
 import java.util.*;
 
 class Solution {
-    private static final int[] dx = {-1, 1, 0, 0}; // 상 하 좌 우
-    private static final int[] dy = {0, 0, -1, 1};
+    private final int[] dx = {-1, 1, 0, 0}; // 상 하 좌 우
+    private final int[] dy = {0, 0, -1, 1};
 
-    private static class Node {
+    private class Node {
         int x, y, dist;
 
         public Node(int x, int y, int dist) {
@@ -14,7 +14,7 @@ class Solution {
         }
     }
     
-    public static int solution(int[][] maps) {
+    public int solution(int[][] maps) {
         int n = maps.length;
         int m = maps[0].length;
 
