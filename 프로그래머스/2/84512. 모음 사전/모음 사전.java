@@ -1,34 +1,15 @@
 class Solution {
-    private static String vowel = "AEIOU";
-	private static int count = 0;
-	private static int answer = 0;
+    private int[] number = {781, 156, 31, 6, 1};
     
     public int solution(String word) {
-        //count = 0;
-		//answer = 0;
-        dfs("", word);
+        int answer = 0;
+		for(int i = 0; i < word.length(); i++) {
+			answer += toIndexOf(word.charAt(i)) * number[i] + 1;
+		}	
 		return answer;
     }
     
-    private void dfs(String cur, String target) {
-		if (cur.length() >= 5) {
-			return;
-		}
-
-		for (char ch : vowel.toCharArray()) {
-			String word = cur + ch;
-			count++;
-
-			if (word.equals(target)) {
-				answer = count;
-				return;
-			}
-
-			dfs(word, target);
-
-			if (answer != 0) {
-				return;
-			}
-		}
+    private int toIndexOf(char ch) {
+		return "AEIOU".indexOf(ch);
 	}
 }
