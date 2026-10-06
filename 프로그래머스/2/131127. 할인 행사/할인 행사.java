@@ -1,28 +1,42 @@
 import java.util.*;
 
-class Solution {
-    public int solution(String[] want, int[] number, String[] discount) {
-        int count = 0;
+// 슬라이딩 윈도우
+public class Solution {
+	
+	public int solution(String[] want, int[] number, String[] discount) {
+		int count = 0;
 		
 		Map<String, Integer> wantMap = new HashMap<>();
 		for(int i = 0; i < want.length; i++) {
 			wantMap.put(want[i], number[i]);
 		}
 		
-		for(int i = 0; i < discount.length - 9; i++) {
-			Map<String, Integer> discountMap = new HashMap<>();
+		Map<String, Integer> discountMap = new HashMap<>();
+		
+		for(int i = 0; i < discount.length; i++) {
 			
-			for(int j = i; j < i + 10; j++) {
-				if(wantMap.containsKey(discount[j])) {
-					discountMap.put(discount[j], discountMap.getOrDefault(discount[j], 0) + 1);
+			String addProduct = discount[i];
+			
+			discountMap.put(addProduct, discountMap.getOrDefault(addProduct, 0) + 1);
+			
+			// 아직 10일이 안 찼으면 비교하지 않음
+			if(i < 9) continue;
+			
+			// 10일 초과하면 가장 오래된 상품 제거
+			if(i >= 10) {
+				String removeProduct = discount[i - 10];
+				discountMap.put(removeProduct, discountMap.get(removeProduct) - 1);
+				if(discountMap.get(removeProduct) == 0) {
+					discountMap.remove(removeProduct);
 				}
 			}
 			
 			if(wantMap.equals(discountMap)) {
 				count++;
-			}			
+			}
 		}
 	
         return count;
     }
+
 }
