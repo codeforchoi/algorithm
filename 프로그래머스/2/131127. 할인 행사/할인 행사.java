@@ -13,22 +13,14 @@ class Solution {
 			Map<String, Integer> discountMap = new HashMap<>();
 			
 			for(int j = i; j < i + 10; j++) {
-				discountMap.put(discount[j], discountMap.getOrDefault(discount[j], 0) + 1);
+				if(wantMap.containsKey(discount[j])) {
+					discountMap.put(discount[j], discountMap.getOrDefault(discount[j], 0) + 1);
+				}
 			}
 			
-			boolean canDiscountAll = true;
-			
-			for(String key : wantMap.keySet()) {
-				// key를 안가지고 있으면 
-				if(!discountMap.containsKey(key) || wantMap.get(key) != discountMap.get(key)) {
-					canDiscountAll = false;
-					break;
-				}				
-			}
-			
-			if(canDiscountAll) {
+			if(wantMap.equals(discountMap)) {
 				count++;
-			}
+			}			
 		}
 	
         return count;
