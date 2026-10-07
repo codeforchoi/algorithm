@@ -1,8 +1,8 @@
 import java.util.*;
 
-class Solution {
-    private static final int[] dr = {-1, 1, 0, 0};
-	private static final int[] dc = {0, 0, -1, 1};
+public class Solution {
+    private static final int[] dr = {0, 1}; // 우 하
+	private static final int[] dc = {1, 0};
 	
 	private static int[] parent;
 	
@@ -27,12 +27,13 @@ class Solution {
 		
 		PriorityQueue<Edge> pq = new PriorityQueue<>((o1, o2) -> Integer.compare(o1.cost, o2.cost));
 		
+		// 미리 연결 가능한 것들은 연결한다.
 		int count = 0;
 		for(int i = 0; i < n; i++) {
 			for(int j = 0; j < n; j++) {
 				int cur = land[i][j];
 				
-				for(int d = 0; d < 4; d++) {
+				for(int d = 0; d < 2; d++) {
 					int nr = i + dr[d];
 					int nc = j + dc[d];
 					
@@ -54,9 +55,13 @@ class Solution {
 			if(parent[i] == i) count++;
 		}
 		
+		// 모두 연결되서 사다리를 설치할 필요가 없는 경우
+		if(count == 1) return 0;
+		
 		int minCost = 0;
 		int cnt = 0;
 		
+		// MST 크루스칼
 		while(!pq.isEmpty()) {
 			Edge edge = pq.poll();
 			
