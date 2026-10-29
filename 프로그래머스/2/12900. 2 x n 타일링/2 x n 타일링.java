@@ -1,15 +1,17 @@
 class Solution {
     public int solution(int n) {
         final int P = 1_000_000_007;
-        int[] dp = new int[n + 1];
     
-        dp[1] = 1;
-        dp[2] = 2;
+        int prev_2 = 1;
+        int prev_1 = 2;
+        int result = 0;
         
         for(int i = 3; i <= n; i++) {
-            dp[i] = (dp[i - 1] + dp[i - 2]) % P;
+            result = (prev_1 + prev_2) % P;
+            prev_2 = prev_1;
+            prev_1 = result;
         }
         
-        return dp[n];
+        return result;
     }
 }
