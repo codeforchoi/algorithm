@@ -1,9 +1,7 @@
-class Solution {
-    private int N, M;
-    
+class Solution {    
     public int solution(int [][]board) {
-        N = board.length;
-        M = board[0].length;
+        int N = board.length;
+        int M = board[0].length;
         
         int maxlen = 0;
         int[][] dp = new int[N + 1][M + 1];
