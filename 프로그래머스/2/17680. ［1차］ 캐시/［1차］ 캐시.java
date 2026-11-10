@@ -11,8 +11,7 @@ class Solution {
         int time = 0;
         for(String name : cities) {
             String city = name.toLowerCase();
-            if(cache.contains(city)) {
-                cache.remove(city);
+            if(cache.remove(city)) {                
                 time += 1;
             } else {
                 time += 5;
